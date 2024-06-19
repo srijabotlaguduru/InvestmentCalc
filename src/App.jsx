@@ -14,22 +14,19 @@ function App() {
 
   function handleChangeInput(identifier, value) {
     setCurrentInv((prev) => {
-      return { ...prev, [identifier]: value };
+      return { ...prev, [identifier]: +value };
     });
-    // onChange(currInvestments)
+  
   }
 
-  // let currInvestments = [];
-
-  // function handleInvestments(value) {
-  //   currInvestments = value;
-  // }
+  const inputIsValid = currInvestments.duration >= 1;
 
   return (
     <>
       <Header />
       <Input currInvestments={currInvestments} onChange={handleChangeInput} />
-      <Result input={currInvestments} />
+      {inputIsValid && <Result input={currInvestments} />}
+      {!inputIsValid && <p className="center">Please enter a duration greater than 0</p>}
     </>
   );
 }

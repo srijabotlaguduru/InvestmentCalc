@@ -1,19 +1,6 @@
-import { useState } from "react";
-const initialState = {
-  initialInvestment: 10000,
-  annualInvestment: 1200,
-  expectedReturn: 6,
-  duration: 10,
-};
-export default function Input({onChange}) {
-  const [currInvestments, setCurrentInv] = useState(initialState);
 
-  function handleChangeInput(identifier, value) {
-    setCurrentInv((prev) => {
-      return { ...prev, [identifier]: value };
-    });
-    onChange(currInvestments)
-  }
+export default function Input({onChange, currInvestments}) {
+
   return (
     <div id="user-input">
       <table>
@@ -26,7 +13,7 @@ export default function Input({onChange}) {
               id="user-input"
               type="number"
               value={currInvestments.initialInvestment}
-              onChange={(event)=>handleChangeInput('initialInvestment', event.target.value)}
+              onChange={(event)=>onChange('initialInvestment', event.target.value)}
             />
           </td>
           <td>
@@ -37,7 +24,7 @@ export default function Input({onChange}) {
               id="user-input"
               type="number"
               value={currInvestments.annualInvestment}
-              onChange={(event)=>handleChangeInput('annualInvestment', event.target.value)}
+              onChange={(event)=>onChange('annualInvestment', event.target.value)}
             />
           </td>
         </tr>
@@ -50,7 +37,7 @@ export default function Input({onChange}) {
               id="user-input"
               type="number"
               value={currInvestments.expectedReturn}
-              onChange={(event)=>handleChangeInput('expectedReturn', event.target.value)}
+              onChange={(event)=>onChange('expectedReturn', event.target.value)}
             />
           </td>
           <td>
@@ -61,7 +48,7 @@ export default function Input({onChange}) {
               id="user-input"
               type="number"
               value={currInvestments.duration}
-              onChange={(event)=>handleChangeInput('duration', event.target.value)}
+              onChange={(event)=>onChange('duration', event.target.value)}
             />
           </td>
         </tr>
